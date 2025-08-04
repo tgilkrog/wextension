@@ -59,24 +59,29 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   const credentials = await loadCredentialsIntoInput();
-  document.querySelector('.log_credentials #username').value = credentials['username'];
-  document.querySelector('.log_credentials #password').value = credentials['password'];
-
+  if (credentials !== null) {
+    document.querySelector('.log_credentials #username').value = credentials['username'];
+    document.querySelector('.log_credentials #password').value = credentials['password'];
+    document.querySelector('.log_credentials #passphrase').value = credentials['passphrase'];
+  }
 
   document.querySelector('.log_credentials .passphrase_btn').addEventListener("click", function() {
     setupCredentials();
   });
 
+  /* SHOW LOGIN */
   loginBtn.addEventListener("click", function () {
     document.querySelector('.checkout_fields').style.display = 'none';
     document.querySelector('.log_credentials').style.display = 'block';
   });
 
+  /* SHOW CHECKOUT */
   checkoutBtn.addEventListener("click", function () {
     document.querySelector('.log_credentials').style.display = 'none';
     document.querySelector('.checkout_fields').style.display = 'block';
   });
 
+  /* SHOW PASSWORD */
   const toggle = document.getElementById('togglePassword');
   const passwordInput = document.getElementById('password');
   const icon = toggle.querySelector('img');

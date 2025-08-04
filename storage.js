@@ -96,7 +96,7 @@ export async function loadCredentialsIntoInput() {
         const username = await decrypt(items.encUsername, passphrase);
         const password = await decrypt(items.encPassword, passphrase);
 
-        resolve({ username, password });
+        resolve({ username, password, passphrase });
       } catch (e) {
         console.error("Decryption failed or wrong passphrase", e);
         reject(e);
