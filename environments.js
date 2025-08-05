@@ -10,10 +10,10 @@ export const buttonGroups = Promise.all([
       domain: (val) => `http://${val.trim()}.localhost/`
     },
     {
-      label: 'Main',
+      label: 'Test',
       domain: (val) => {
         const v = val.trim();
-        return /^https?:\/\//.test(v) ? v : `https://${v}.dk`;
+        return /^https?:\/\//.test(v) ? v : `https://${v}-test.wexohosting.com`;
       }
     },
     {
@@ -24,10 +24,10 @@ export const buttonGroups = Promise.all([
       }
     },
     {
-      label: 'Test',
+      label: 'Main',
       domain: (val) => {
         const v = val.trim();
-        return /^https?:\/\//.test(v) ? v : `https://${v}-test.wexohosting.com`;
+        return /^https?:\/\//.test(v) ? v : `https://${v}.dk`;
       }
     }
   ];
