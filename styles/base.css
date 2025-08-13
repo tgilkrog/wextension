@@ -4,7 +4,7 @@ html, body {
     font-family: sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
-    width: 350px;
+    width: 380px;
 }
 
 button, input {

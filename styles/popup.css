@@ -112,7 +112,6 @@
 
                     .button-group {
                         display: flex;
-                        gap: 0.5rem;
                         flex-wrap: wrap;
 
                         button {
@@ -125,17 +124,17 @@
                             }
 
                             svg {
-                                width: 15px;
-                                fill: var(--text-color);
+                                width: 20px;
+                                stroke: var(--text-color);
                             }
                         }
 
                         .main {
-                            margin: 0 0 0 auto;
+                            margin: 0 2.5px 0 auto;
                         }
 
                         .admin {
-                            margin: 0 auto 0 0;
+                            margin: 0 auto 0 2.5px;
                         }
                     }
                 }
@@ -174,8 +173,33 @@
     background-color: var(--bg-color);
     border-top: 2px solid var(--card-color);
 
-    #fill_user, #add-field {
+    #fill_user, #add-field, #fillData, .settings_btn {
         margin-right: 5px;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background-color: var(--accent-color);
+        }
+
+        img {
+            transition: all 0.5s ease;
+        }
+    }
+
+    #fill_user:hover img {
+        content: url("../icons/user-hover.svg");
+    }
+
+    #fillData:hover img {
+        content: url("../icons/cart-hover.svg");
+    }
+
+    #add-field:hover {
+        color: var(--bg-color);
+    }
+
+    .settings_btn:hover img {
+        content: url("../icons/gear-solid-hover.svg");
     }
 
     .btn {

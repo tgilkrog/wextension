@@ -55,7 +55,7 @@
   position: fixed;
   top: 0;
   left: 100%; /* Start fully off-screen to the right */
-  width: 315px;
+  width: 345px;
   height: 100%;
   background-color: var(--bg-color);
   box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
@@ -74,49 +74,72 @@
             padding: 5px;
             border-radius: 6px;
 
-            table {
-                border-collapse: collapse;
-                margin: 5px 0;
-                color: var(--text-color);
-                background-color: var(--card-color);
-                box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
-                border-radius: 6px;
-
-                tr td {
-                    padding: 5px 10px;
-                    position: relative;
-
-                    input {
-                        color: var(--text-color);
-                        background-color: var(--bg-color);
-                        border: none;
-                        border-radius: 6px;
-                        padding: 5px 5px 5px 10px;
-                        margin: 0;
-                    }
-
-                    #togglePassword {
-                        position: absolute;
-                        right: 15px;
-                        top: 10px;
-                    }
-
-                    .save_btn_line {
-                        display: flex;
-                    }
-                }
-            }
-
             h4 {
                 margin: 0 0 10px 0;
                 color: var(--accent-color);
                 font-weight: bold;
                 font-size: 16px;
             }
+
+            .settings_list {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr); /* 2 columns */
+                gap: 1rem;
+                padding: 0.5rem;
+                box-sizing: border-box;
+
+                .settings_list_item {
+                    display: flex;
+                    flex-direction: column;
+                    position: relative;
+                    padding: 5px;
+                    min-width: 0;
+
+                    label {
+                        background-color: var(--bg-color);
+                        position: absolute;
+                        top: -5px;
+                        left: 15px;
+                        color: var(--accent-color);
+                        padding: 0 5px;
+                        font-size: 14px;
+                    }
+
+                    input {
+                        background-color: var(--bg-color);
+                        border-radius: 10px;
+                        border: 1px solid var(--accent-color);
+                        padding: 10px;
+                        color: var(--text-color);
+                        font-size: 12px;
+                    }
+
+                    #togglePassword {
+                        position: absolute;
+                        top: -2px;
+                        right: 15px;
+                        background-color: var(--bg-color);
+                        padding: 2px;
+                    }
+
+                    .passphrase_btn {
+                        border: 1px solid var(--accent-color);
+                        background-color: var(--bg-color);
+                        border-radius: 10px;
+                        padding: 5px;
+                        color: var(--accent-color);
+                        cursor: pointer;
+                    }
+                }
+            }
         }
 
         .log_credentials {
             display: none;
+
+            .settings_list {
+                grid-template-columns: repeat(1, 1fr);
+            }
 
             img {
                 width: 15px;
