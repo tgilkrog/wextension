@@ -6,7 +6,7 @@ export function createSaveFields(container)
   return debounce(() => {
     const values = Array.from(container.children).map(wrapper => {
       const input = wrapper.querySelector('input');
-      const isCollapsed = wrapper.querySelector('.field-content').style.display === 'none';
+      const isCollapsed = wrapper.querySelector('.field-content').classList.contains('collapsed');
       return { value: input.value, collapsed: isCollapsed };
     });
     chrome.storage.local.set({ fields: values });

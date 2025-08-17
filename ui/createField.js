@@ -63,7 +63,7 @@ export async function createField(container, saveFields, field = { value: '', co
 
   const contentDiv = document.createElement('div');
   contentDiv.className = 'field-content';
-  if (field.collapsed) contentDiv.style.display = 'none';
+  if (field.collapsed) contentDiv.classList.add('collapsed');
 
   buttonGroups.then(groups => {
     const allGroupsContainer = document.createElement('div');
@@ -83,9 +83,8 @@ export async function createField(container, saveFields, field = { value: '', co
   makeDraggable(wrapper, dragHandle, container, saveFields);
 
   collapseToggle.addEventListener('click', () => {
-    const isHidden = contentDiv.style.display === 'none';
-    contentDiv.style.display = isHidden ? '' : 'none';
-    collapseToggle.textContent = isHidden ? '▼' : '▶';
+    const isCollapsed = contentDiv.classList.toggle('collapsed');
+    collapseToggle.textContent = isCollapsed ? '▶' : '▼';
     saveFields();
   });
 
