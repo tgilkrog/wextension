@@ -11,7 +11,7 @@ function decode(buf) {
 // Generate a key from a passphrase
 async function getKeyFromPassphrase(passphrase, salt) {
     const enc = new TextEncoder();
-    const keyMaterial = await window.crypto.subtle.importKey(
+    const keyMaterial = await crypto.subtle.importKey(
         "raw",
         enc.encode(passphrase),
         {name: "PBKDF2"},

@@ -5,19 +5,32 @@
   "action": {
     "default_popup": "popup.html"
   },
-  "permissions": ["scripting", "storage", "tabs", "activeTab"],
+  "permissions": [
+    "scripting",
+    "storage",
+    "tabs",
+    "activeTab"
+  ],
   "host_permissions": [
     "<all_urls>"
   ],
-   "web_accessible_resources": [{
-    "resources": ["icons/*.svg"],
-    "matches": ["<all_urls>"]
-  }],
-  "content_scripts": [
+  "web_accessible_resources": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["popup.js"],
-      "type": "module"
+      "resources": ["icons/*.svg"],
+      "matches": ["<all_urls>"]
     }
-  ]
+  ],
+  "commands": {
+    "auto-login": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Z",
+        "mac": "Command+Shift+Z"
+      },
+      "description": "Autofill and login"
+    }
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  }
 }

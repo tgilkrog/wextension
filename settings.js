@@ -1,51 +1,5 @@
 import { saveFormData, loadFormData, loadCredentialsIntoInput, setupCredentials } from './storage.js';
 
-document.getElementById('fillData').addEventListener('click', async () => {
-  let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-
-  chrome.scripting.executeScript({
-    target: { tabId: tab.id },
-    files: ['content-fill.js']
-  });
-  
-  window.close();
-});
-
-document.getElementById('fill_user').addEventListener('click', async () => {
-  let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  const credentials = await loadCredentialsIntoInput();  // Await here
-
-  chrome.scripting.executeScript({
-    target: { tabId: tab.id },
-    func: (credentials) => {
-      const userEl = document.querySelector('[name="sw-field--username"]');
-      const passEl = document.querySelector('[name="sw-field--password"]');
-      const loginBtn = document.querySelector('.sw-login__login-action, .sw-button--primary');
-
-      if (userEl && passEl) {
-        userEl.value = credentials.username;
-        passEl.value = credentials.password;
-        userEl.dispatchEvent(new Event('input', { bubbles: true }));
-        passEl.dispatchEvent(new Event('input', { bubbles: true }));
-      }
-
-      else if (passEl && !userEl) {
-        passEl.value = credentials.password;
-        passEl.dispatchEvent(new Event('input', { bubbles: true }));
-      }
-
-      setTimeout(() => {
-        if (loginBtn) {
-          loginBtn.click();
-        }
-      }, 300);
-    },
-    args: [credentials]  // Pass credentials into the page context
-  });
-
-  window.close();
-});
-
 document.addEventListener("DOMContentLoaded", async () => {
   const settingsBtn = document.querySelector(".settings_btn");
   const settingsPage = document.querySelector(".settings_page");
